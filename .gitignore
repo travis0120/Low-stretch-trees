@@ -1,4 +1,5 @@
-.idea
+.idea/
+LST/Node.py
+LST/classes/test.py
+LST/main.py
 .gitignore
-./LST/main.py
-./LST/Node.py
