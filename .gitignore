@@ -1,0 +1,4 @@
+.idea
+.gitignore
+./LST/main.py
+./LST/Node.py
