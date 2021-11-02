@@ -1,12 +1,12 @@
 import collections
 import networkx as nx
 
-__all__=['all_paris_shortest_path',
-         'shortest_path',
-         'get_edges_in_distance',
-         'get_vertices_in_distance',
-         'get_distance_between',
-         'get_diameter']
+__all__ = ['all_paris_shortest_path',
+           'shortest_path',
+           'get_edges_in_distance',
+           'get_vertices_in_distance',
+           'get_distance_between',
+           'get_diameter']
 
 
 def _dijkstra(graph, vertex, cutoff):
