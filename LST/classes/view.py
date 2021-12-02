@@ -49,9 +49,13 @@ class EdgeView:
         self._nodes_nbrs = self._adjdict.items
 
     def __iter__(self):
+        seen = {}
         for n, nbrs in self._nodes_nbrs():
-            for nbr in nbrs:
-                yield (n, nbr)
+            for nbr in list(nbrs):
+                if nbr not in seen:
+                    yield n, nbr
+            seen[n] = 1
+        del seen
 
     def __contains__(self, e):
         try:
@@ -76,3 +80,7 @@ class EdgeView:
 
     def __repr__(self):
         return f"{self.__class__.__name__}({list(self)})"
+
+    def __len__(self):
+        num_nbrs = (len(nbrs) + (n in nbrs) for n, nbrs in self._nodes_nbrs())
+        return sum(num_nbrs) // 2

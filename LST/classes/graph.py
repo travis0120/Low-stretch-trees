@@ -4,7 +4,6 @@ __all__ = ['Graph']
 
 
 class Graph(object):
-
     node_dict = dict
     adj_outer_dict_factory = dict
     adj_inner_dict_factory = dict
@@ -24,6 +23,7 @@ class Graph(object):
             return item in self._nodes
         except ValueError:
             return False
+
     def __getitem__(self, item):
         return self._adj[item]
 
@@ -83,4 +83,8 @@ class Graph(object):
     def is_multigraph(self):
         return False
 
+    def number_of_nodes(self):
+        return len(self._nodes)
 
+    def number_of_edges(self):
+        return len(self.edges)

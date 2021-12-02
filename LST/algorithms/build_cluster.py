@@ -6,25 +6,6 @@ from LST.algorithms.undirected import *
 __all__ = ['low_stretch_tree']
 
 
-# def generate_sub(adj, root, tree, seen=set()):
-#     if not tree:
-#         tree[root] = {}
-#
-#     neighbors = adj.pop(root)
-#     seen.add(root)
-#     for key, value in neighbors.items():
-#         if key in seen:
-#             continue
-#         else:
-#             seen.add(key)
-#             tree[root].update({key: value})
-#
-#     for node in tree[root].keys():
-#         generate_sub(adj, node, tree[root], seen)
-#
-#     return tree
-
-
 def generate_sub(adj, root):
     next_level = {root}
     seen = {root}
@@ -39,8 +20,6 @@ def generate_sub(adj, root):
                 if u not in seen:
                     found.append(u)
                     tree_graph.add_edge(v, u)
-                    # tree_adj[v].update({u: {}})
-                    # tree_adj[u].update({v: {}})
 
         for v in found:
             seen.add(v)
@@ -118,12 +97,12 @@ def low_stretch_tree(graph, c=None):
             inside_adj, outside_adj = get_internal_and_inter_cluster(graph, partition)
             _spt, _root = shortest_path_tree(inside_adj, partition)
             _sub_G = nx.compose(_spt, nx.Graph(outside_adj))
+            _sub_G.update(outside_adj)
             for v in inside_adj:
                 if v != _root:
                     _sub_G = nx.contracted_nodes(_sub_G, _root, v)
 
-            H = nx.compose(H, _sub_G)
-
+            H.update(_sub_G)
         except StopIteration:
             break
     return low_stretch_tree(H)
