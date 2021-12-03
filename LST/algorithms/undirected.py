@@ -1,5 +1,4 @@
 import collections
-import networkx as nx
 
 __all__ = ['all_paris_shortest_path',
            'shortest_path',
@@ -69,7 +68,7 @@ def get_vertices_in_distance(graph, vertex, distance: int):
     return dict(_vertices)
 
 
-def get_edges_in_distance(graph, vertex, distance: int, endpoints = 2):
+def get_edges_in_distance(graph, vertex, distance: int):
     g, u, i = graph, vertex, distance + 1
 
     level = 0

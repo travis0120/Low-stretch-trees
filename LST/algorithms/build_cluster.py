@@ -1,6 +1,4 @@
-# from undirected import get_edges_in_distance
-import networkx as nx
-
+import LST as lst
 from LST.algorithms.undirected import *
 
 __all__ = ['low_stretch_tree']
@@ -9,7 +7,7 @@ __all__ = ['low_stretch_tree']
 def generate_sub(adj, root):
     next_level = {root}
     seen = {root}
-    tree_graph = nx.Graph()
+    tree_graph = lst.Graph()
     while next_level:
         this_level = next_level
         next_level = set()
@@ -90,19 +88,18 @@ def low_stretch_tree(graph, c=None):
     if D == 0:
         return graph
     _U = build_partition(graph, c, D)
-    H = nx.Graph()
+    H = lst.Graph()
     while True:
         try:
             partition = next(_U)
             inside_adj, outside_adj = get_internal_and_inter_cluster(graph, partition)
             _spt, _root = shortest_path_tree(inside_adj, partition)
-            _sub_G = nx.compose(_spt, nx.Graph(outside_adj))
-            _sub_G.update(outside_adj)
+            _sub_G = lst.compose_graph(_spt, lst.Graph(outside_adj))
             for v in inside_adj:
                 if v != _root:
-                    _sub_G = nx.contracted_nodes(_sub_G, _root, v)
+                    _sub_G = lst.contract_nodes(_sub_G, _root, v)
 
-            H.update(_sub_G)
+            H = lst.compose_graph(H, _sub_G)
         except StopIteration:
             break
     return low_stretch_tree(H)

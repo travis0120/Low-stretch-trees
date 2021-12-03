@@ -1,4 +1,8 @@
+import random
+
 import LST as lst
+
+__all__ = ['random_mst']
 
 
 def random_mst(graph):
