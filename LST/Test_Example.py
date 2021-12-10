@@ -27,5 +27,10 @@ for i in range(10):
     v1, v2 = random.randint(*c1), random.randint(*c2)
     G.add_edge(v1, v2)
 
-T = lst.low_stretch_tree(G)
+print("--------------Low Stretch Tree-------------------")
+T = lst.low_stretch_tree(G.copy())
+print(T.adj)
+
+print("-----------Minimum Spanning Tree-----------------")
+T = lst.random_mst(G.copy())
 print(T.adj)

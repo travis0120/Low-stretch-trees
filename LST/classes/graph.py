@@ -55,6 +55,10 @@ class Graph(object):
             self._adj[node_name] = self.adj_inner_dict_factory()
             self._nodes[node_name] = self.node_dict()
 
+    def add_nodes_from(self, nodes):
+        for u in iter(nodes):
+            self.add_node(u)
+
     def remove_node(self, n):
         adj = self._adj
         try:

@@ -15,7 +15,7 @@ def random_mst(graph):
     n_edges = graph.number_of_edges()
 
     edges_lst = list(graph.edges)
-    _rw = [random.randint(1, n_edges + 1) for _ in range(n_edges)]
+    _rw = [random.randint(1, n_edges * 10) for _ in range(n_edges)]
     rank_edges = [x for x, _ in sorted(zip(edges_lst, _rw), key=lambda pair: pair[1])]
 
     parents_map = dict()
