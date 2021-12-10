@@ -3,18 +3,19 @@
 ## LST 
 LST is a Python package for the creation, manipulation, and study of the low-stretch tree.<br>
 
-##Install
-``git clone https://github.com/travis0120/Low-stretch-trees.git``
+##Install 
+``$ git clone https://github.com/travis0120/Low-stretch-trees.git``
 <br>
-``cd Low-stretch-trees``
+``$ cd Low-stretch-trees``
 <br>
 
-##Tutorial
-###Create a Graph
+##Tutorial 
+
+###Create a Graph 
 ``>> import LST as lst``<br>
 ``>> G = lst.Graph()``<br>
 
-### Add a Node
+### Add a Node 
 ``>> import LST as lst``<br>
 ``>> G = lst.Graph()``<br>
 ``>> G.add_node("node_1")``<br>
